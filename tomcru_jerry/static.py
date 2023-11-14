@@ -9,6 +9,7 @@ from bs4 import BeautifulSoup
 from flask import Flask, render_template, request, send_from_directory
 from werkzeug.routing import BaseConverter
 
+
 class RegexConverter(BaseConverter):
     def __init__(self, url_map, *items):
         super(RegexConverter, self).__init__(url_map)
@@ -102,6 +103,8 @@ class Ememail(StaticWebsite):
 
             # read in CSS content
             css_file = el['href']
+            if css_file.startswith('/'):
+                css_file = css_file[1:]
             with open(os.path.join(self.static_folder, css_file)) as fh:
                 css = fh.read()
 

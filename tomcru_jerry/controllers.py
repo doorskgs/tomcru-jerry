@@ -104,4 +104,4 @@ def add_endpoint(app, route, endpoint_id, method_fn):
         method, route = sp
 
     # print('??', method, route, endpoint_id)
-    app.add_url_rule(route, endpoint_id, method_fn, methods=[method])
+    app.add_url_rule(route, endpoint_id, method_fn, methods=[method], strict_slashes=False)

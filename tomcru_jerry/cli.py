@@ -58,7 +58,10 @@ class CommandLineInterface():
                     else:
                         kwargs['type'] = pee.annotation
 
-                        if 'default' in kwargs:
+                        if kwargs['type'] is bool:
+                            argument = '--' + par_name
+                            kwargs['action'] = argparse.BooleanOptionalAction
+                        elif 'default' in kwargs:
                             argument = '--' + par_name
                             kwargs['required'] = False
 
